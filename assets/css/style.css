@@ -1703,8 +1703,22 @@ body {
 /* =========================
    MOBILE NAVBAR FIX
 ========================= */
-
 @media (max-width: 768px) {
+  /* Make header a positioning context */
+  .header {
+    position: relative;
+    min-height: 70px;
+    padding: 15px 0;
+  }
+  
+  .header .container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Position navbar absolutely within header */
   .navbar {
     position: absolute;
     top: 100%;
@@ -1715,33 +1729,44 @@ body {
     overflow: hidden;
     transition: max-height 0.35s ease;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
   }
-
+  
   .navbar.active {
-    max-height: 500px; /* enough to show all links */
+    max-height: 500px;
   }
-
+  
   .navbar-list {
     flex-direction: column;
     padding: 20px;
     gap: 15px;
   }
-
+  
   .navbar-link {
     color: #111;
     font-size: 1.1rem;
+    display: block;
+    padding: 10px 0;
   }
-
+  
   .nav-toggle-btn .close {
     display: none;
   }
-
+  
   .nav-toggle-btn.active .open {
     display: none;
   }
-
+  
   .nav-toggle-btn.active .close {
     display: block;
   }
+  
+  /* Add margin to main content so it doesn't jump */
+  main, 
+  section:first-of-type {
+    margin-top: 20px;
+  }
 }
+
 
