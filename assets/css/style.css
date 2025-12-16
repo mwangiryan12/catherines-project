@@ -1142,9 +1142,9 @@ textarea.input-field {
 
  .author .container {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr; /* better balance */
+  grid-template-columns: 0.8fr 1.2fr;
   align-items: center;
-  gap: 40px; /* spacing between image and text */
+  gap: 40px;
 }
 
 .author-banner {
@@ -1152,8 +1152,8 @@ textarea.input-field {
 }
 
 .author-content {
-  margin-block-start: 20px;    /* softer spacing */
-  margin-inline-start: 0;      /* remove negative margin */
+  margin-block-start: 20px;
+  margin-inline-start: 0;
   padding-block-end: 40px;
   max-width: 600px;
 }
@@ -1179,6 +1179,7 @@ textarea.input-field {
     margin-inline-start: 0;
   }
 }
+
 
   /**
    * ACHIEVEMENT
@@ -1699,4 +1700,48 @@ body {
 }
 
 
+/* =========================
+   MOBILE NAVBAR FIX
+========================= */
+
+@media (max-width: 768px) {
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+
+  .navbar.active {
+    max-height: 500px; /* enough to show all links */
+  }
+
+  .navbar-list {
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .navbar-link {
+    color: #111;
+    font-size: 1.1rem;
+  }
+
+  .nav-toggle-btn .close {
+    display: none;
+  }
+
+  .nav-toggle-btn.active .open {
+    display: none;
+  }
+
+  .nav-toggle-btn.active .close {
+    display: block;
+  }
+}
 
