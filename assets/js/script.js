@@ -92,3 +92,26 @@ const appearOnScroll = new IntersectionObserver(function(entries, observer) {
 faders.forEach(fader => {
   appearOnScroll.observe(fader);
 });
+// parallax effect
+
+// Add subtle parallax to book covers
+window.addEventListener('scroll', () => {
+    bookSections.forEach(section => {
+        const bookCover = section.querySelector('.book-cover');
+        if (bookCover) {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            bookCover.style.transform = `translateY(${rate}px)`;
+        }
+    });
+});
+// Animate text when book comes into view
+const bookTitle = entry.target.querySelector('.book-title');
+const bookAuthor = entry.target.querySelector('.book-author');
+const bookDesc = entry.target.querySelector('.book-description');
+
+if (bookTitle) {
+    bookTitle.style.animation = 'slideInLeft 0.8s ease forwards';
+    bookTitle.style.opacity = '0';
+    setTimeout(() => { bookTitle.style.opacity = '1'; }, 300);
+}

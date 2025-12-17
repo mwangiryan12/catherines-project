@@ -1203,3 +1203,396 @@ em {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* maroon backgrounds */
+/* ===== ENHANCED MAROON COLOR PALETTE ===== */
+:root {
+  /* Primary Maroons */
+  --maroon-deep: #2a0000;    /* Deepest - for header/footer */
+  --maroon-rich: #3a0000;    /* Rich - main background */
+  --maroon-warm: #4a0000;    /* Warm - for contrast sections */
+  --maroon-velvet: #5a0000;  /* Velvet - for book sections */
+  --maroon-rose: #6a0000;    /* Rosy - for highlights */
+  --maroon-gold: #c9a375;    /* Accent gold */
+  --soft-white: #f0e6d2;
+  --pure-white: #ffffff;
+}
+
+/* Update body background */
+body {
+  background-color: var(--maroon-rich);
+}
+
+/* Update header/footer */
+.header {
+  background-color: var(--maroon-deep);
+}
+
+.footer {
+  background-color: var(--maroon-deep);
+}
+
+/* Different sections get different maroons */
+.section.hero {
+  background: linear-gradient(135deg, var(--maroon-deep) 0%, var(--maroon-warm) 100%);
+}
+
+.section.trilogy-intro {
+  background: linear-gradient(135deg, var(--maroon-warm) 0%, var(--maroon-velvet) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.section.trilogy-intro::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, var(--maroon-rose) 0%, transparent 50%);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.section.philosophy {
+  background: linear-gradient(135deg, var(--maroon-velvet) 0%, var(--maroon-warm) 100%);
+}
+
+/* Book sections - will be animated with scroll */
+.section.book {
+  background-color: var(--maroon-velvet);
+  transition: background-color 0.8s ease, transform 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle pattern overlay */
+.section.book::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(201, 163, 117, 0.05) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(201, 163, 117, 0.05) 2px, transparent 2px);
+  background-size: 50px 50px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.section.bundle {
+  background: linear-gradient(135deg, var(--maroon-rose) 0%, var(--maroon-velvet) 100%);
+  position: relative;
+}
+
+.section.bundle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Ensure content stays above patterns */
+.section .container {
+  position: relative;
+  z-index: 2;
+}
+/* bigger topography */
+/* ===== EXTRA LARGE & BOLD TYPOGRAPHY ===== */
+.hero-title {
+  font-size: 7rem !important;
+  font-weight: 1000 !important;
+  line-height: 1 !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 
+    4px 4px 0px rgba(0, 0, 0, 0.5),
+    8px 8px 15px rgba(0, 0, 0, 0.3);
+  margin-bottom: 50px !important;
+  background: linear-gradient(45deg, #ffffff 0%, #f0e6d2 50%, var(--maroon-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: textShine 3s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.trilogy-intro .section-title {
+  font-size: 8rem !important;
+  font-weight: 1000 !important;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, var(--maroon-gold), #ffd700, var(--maroon-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.trilogy-intro .section-title::before,
+.trilogy-intro .section-title::after {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: var(--maroon-gold);
+  opacity: 0.7;
+}
+
+.trilogy-intro .section-title::before {
+  left: -40px;
+}
+
+.trilogy-intro .section-title::after {
+  right: -40px;
+}
+
+.book-text .section-title {
+  font-size: 6.5rem !important;
+  font-weight: 1000 !important;
+  letter-spacing: 1.5px;
+  margin-bottom: 50px !important;
+  position: relative;
+  padding: 20px 0;
+  border-bottom: 3px solid var(--maroon-gold);
+}
+
+.bundle-content .section-title {
+  font-size: 7rem !important;
+  font-weight: 1000 !important;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background: linear-gradient(45deg, 
+    var(--maroon-gold) 0%, 
+    #ffffff 25%, 
+    var(--maroon-gold) 50%, 
+    #ffffff 75%, 
+    var(--maroon-gold) 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: bundleShine 4s linear infinite;
+  text-shadow: 0 0 30px rgba(201, 163, 117, 0.3);
+}
+
+@keyframes bundleShine {
+  to {
+    background-position: 300% center;
+  }
+}
+
+/* Make ALL text bigger */
+.section-text {
+  font-size: 2.2rem !important;
+  line-height: 1.8 !important;
+}
+
+.philosophy-text {
+  font-size: 2.4rem !important;
+  line-height: 1.9 !important;
+}
+
+.book-for h3 {
+  font-size: 2.8rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--maroon-gold) !important;
+  padding: 15px 0;
+  border-bottom: 2px solid var(--maroon-gold);
+  margin-bottom: 30px !important;
+}
+
+/* Bigger buttons */
+.btn-primary,
+.bundle-btn,
+.book-btn {
+  font-size: 2rem !important;
+  padding: 25px 70px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1px;
+  border-width: 3px !important;
+}
+
+/* Responsive scaling */
+@media (max-width: 1200px) {
+  .hero-title { font-size: 6rem !important; }
+  .trilogy-intro .section-title { font-size: 6.5rem !important; }
+  .book-text .section-title { font-size: 5.5rem !important; }
+  .bundle-content .section-title { font-size: 6rem !important; }
+}
+
+@media (max-width: 992px) {
+  .hero-title { font-size: 5rem !important; }
+  .trilogy-intro .section-title { font-size: 5.5rem !important; }
+  .book-text .section-title { font-size: 4.5rem !important; }
+  .bundle-content .section-title { font-size: 5rem !important; }
+  .section-text { font-size: 1.8rem !important; }
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 4rem !important; letter-spacing: 1px; }
+  .trilogy-intro .section-title { font-size: 4.5rem !important; }
+  .book-text .section-title { font-size: 3.8rem !important; }
+  .bundle-content .section-title { font-size: 4.2rem !important; }
+  .section-text { font-size: 1.6rem !important; }
+  .btn-primary { font-size: 1.6rem !important; padding: 20px 50px !important; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 3.2rem !important; }
+  .trilogy-intro .section-title { font-size: 3.5rem !important; }
+  .book-text .section-title { font-size: 3rem !important; }
+  .bundle-content .section-title { font-size: 3.2rem !important; }
+}
+/* eye catching effects */
+/* ===== PARALLAX SCROLL EFFECT ===== */
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner,
+.trilogy-image,
+.philosophy-banner,
+.book-cover,
+.bundle-cover {
+  transition: transform 0.5s ease;
+}
+
+/* ===== FLOATING ANIMATION FOR BOOK COVERS ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.book-cover {
+  animation: float 6s ease-in-out infinite;
+}
+
+.book-cover:hover {
+  animation-play-state: paused;
+  transform: translateY(-20px) scale(1.05);
+}
+
+/* ===== GLOWING BORDERS ===== */
+.section.book {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  transition: border-color 0.5s ease;
+}
+
+.section.book:nth-child(odd) {
+  border-left-color: var(--maroon-gold);
+}
+
+.section.book:nth-child(even) {
+  border-right-color: var(--maroon-gold);
+}
+
+/* ===== SPARKLE EFFECT ===== */
+.sparkle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--maroon-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: sparkle 2s linear infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+/* Add these to your stylesheet */
+.section.book {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.section.book::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff6b6b, transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.section.book.active::after {
+    opacity: 1;
+}
+
+/* Shimmer effect on book cover */
+.book-cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        transparent 20%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 80%
+    );
+    transform: rotate(30deg);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.book-cover:hover::before {
+    opacity: 1;
+    animation: shimmer 1.5s;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+}
+
+/* Minimal glowing titles */
+.book-title {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: text-shadow 0.3s ease;
+}
+
+.book-title:hover {
+    text-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.8),
+        0 0 25px rgba(255, 100, 100, 0.5);
+}
+
+.section.book.active .book-title {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+    to { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+}
