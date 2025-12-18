@@ -1942,7 +1942,7 @@ textarea:focus {
     font-weight: 900;
     font-size: 6rem !important;
     margin-top: 15px;
-    background: linear-gradient(45deg, var(--maroon-gold), #ffd700, var(--maroon-gold));
+    background: linear-gradient(45deg, var(--maroon-gold), #ecebea, var(--maroon-gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -2475,7 +2475,7 @@ main {
     font-weight: 700 !important; /* Bold but not ultra-bold */
     line-height: 1.2 !important;
     letter-spacing: 0.5px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgb(243, 240, 240);
     margin-bottom: 20px !important;
     color: var(--pure-white) !important; /* Solid white, no gradient */
     text-align: center;
@@ -3103,4 +3103,365 @@ main {
     .hero-headline-centered h1 {
         padding: 0 5px !important;
     }
+}
+
+/* ===== CHANGE ALL BOOK TITLES TO WHITE ===== */
+
+/* 1. Remove color gradients from all book titles */
+#i-release .section-title,
+#i-am .section-title,
+#i-choose .section-title {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+    color: var(--pure-white) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 2. Remove decorative icons/emojis */
+#i-release .section-title::before,
+#i-release .section-title::after,
+#i-am .section-title::before,
+#i-am .section-title::after,
+#i-choose .section-title::before,
+#i-choose .section-title::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* 3. Remove colored borders */
+#i-release .section-title,
+#i-am .section-title,
+#i-choose .section-title {
+    border-image: none !important;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* 4. Also remove any icon colors from fancy book sections */
+#i-release .fancy-book-for,
+#i-am .fancy-book-for,
+#i-choose .fancy-book-for {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+#i-release .point-content strong,
+#i-am .point-content strong,
+#i-choose .point-content strong {
+    color: #8B4513 !important; /* Keep the brown/copper color for emphasis in the text */
+}
+
+/* 5. Optional: Keep the leaf icons but make them white */
+#i-release .fancy-header h3 .leaf-icon,
+#i-am .fancy-header h3 .leaf-icon,
+#i-choose .fancy-header h3 .leaf-icon {
+    color: var(--pure-white) !important;
+    opacity: 0.8;
+}
+
+/* 6. Mobile responsive */
+@media (max-width: 768px) {
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        font-size: 3.2rem !important;
+    }
+}/* ===== OPTION: Keep decorative elements but in white ===== */
+#i-release .section-title::before,
+#i-release .section-title::after {
+    content: "❖" !important; /* White diamond instead of leaf */
+    color: var(--pure-white) !important;
+    opacity: 0.5;
+}
+
+#i-am .section-title::before,
+#i-am .section-title::after {
+    content: "✦" !important; /* White star */
+    color: var(--pure-white) !important;
+    opacity: 0.5;
+}
+
+#i-choose .section-title::before,
+#i-choose .section-title::after {
+    content: "◈" !important; /* White diamond */
+    color: var(--pure-white) !important;
+    opacity: 0.5;
+}
+
+/* ===== FIX OPTION 2: WHITE TITLES WITH WHITE ICONS ===== */
+
+/* First, remove ALL previous icon styles */
+#i-release .section-title::before,
+#i-release .section-title::after,
+#i-am .section-title::before,
+#i-am .section-title::after,
+#i-choose .section-title::before,
+#i-choose .section-title::after {
+    all: unset !important; /* Nuclear reset */
+}
+
+/* Now apply white titles */
+#i-release .section-title,
+#i-am .section-title,
+#i-choose .section-title {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+    color: var(--pure-white) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    position: relative !important; /* Required for pseudo-elements */
+    padding: 0 50px !important; /* Make space for icons */
+}
+
+/* I RELEASE - White leaf/diamond */
+#i-release .section-title::before,
+#i-release .section-title::after {
+    content: "✦" !important; /* Simple star - works everywhere */
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 2.5rem !important;
+    color: var(--pure-white) !important;
+    opacity: 0.7 !important;
+}
+
+#i-release .section-title::before {
+    left: 0 !important;
+}
+
+#i-release .section-title::after {
+    right: 0 !important;
+}
+
+/* I AM - White star */
+#i-am .section-title::before,
+#i-am .section-title::after {
+    content: "✧" !important; /* Different star */
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 2.5rem !important;
+    color: var(--pure-white) !important;
+    opacity: 0.7 !important;
+}
+
+#i-am .section-title::before {
+    left: 0 !important;
+}
+
+#i-am .section-title::after {
+    right: 0 !important;
+}
+
+/* I CHOOSE - White diamond */
+#i-choose .section-title::before,
+#i-choose .section-title::after {
+    content: "♦" !important; /* Diamond symbol */
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 2.5rem !important;
+    color: var(--pure-white) !important;
+    opacity: 0.7 !important;
+}
+
+#i-choose .section-title::before {
+    left: 0 !important;
+}
+
+#i-choose .section-title::after {
+    right: 0 !important;
+}
+
+/* Mobile: Hide icons on small screens */
+@media (max-width: 768px) {
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        padding: 0 !important; /* Remove padding on mobile */
+    }
+    
+    #i-release .section-title::before,
+    #i-release .section-title::after,
+    #i-am .section-title::before,
+    #i-am .section-title::after,
+    #i-choose .section-title::before,
+    #i-choose .section-title::after {
+        display: none !important; /* Hide icons on mobile */
+    }
+}
+
+
+/* ===== CHANGE FONT TO SUPER CLEAR/READABLE ===== */
+
+/*/* ===== NUKE ALL YELLOW/GOLD COLORS - MAKE EVERYTHING PURE WHITE ===== */
+/* ===== BEAUTIFUL TYPOGRAPHY REDESIGN ===== */
+
+/* 1. IMPORT BEAUTIFUL, CLEAR FONT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* 2. RESET ALL HEADLINE STYLES */
+.hero-headline-centered h1,
+.hero-headline-centered h1 em {
+    all: unset;
+    display: block;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #FFFFFF;
+    text-align: center;
+    width: 100%;
+}
+
+/* 3. MAIN HEADLINE - BEAUTIFUL & CLEAR */
+.hero-headline-centered h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.3px;
+    margin: 0;
+    padding: 0;
+}
+
+/* 4. EMPHASIS LINE - ELEGANT ITALIC */
+.hero-headline-centered h1 em {
+    font-size: 4.5rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.1;
+    letter-spacing: -0.2px;
+    margin-top: 0.5em;
+    display: block;
+    opacity: 0.95;
+}
+
+/* 5. EYEBROW/TAGLINE - CLEAN & PROFESSIONAL */
+.hero-eyebrow {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+    display: block;
+    text-align: center;
+}
+
+/* 6. ADD ELEGANT SEPARATOR */
+.hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 12px auto 0;
+}
+
+/* 7. PERFECT CENTERING & SPACING */
+.hero-headline-centered {
+    padding: 3rem 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 8. SUBTLE TEXT SHADOW FOR DEPTH */
+.hero-headline-centered h1,
+.hero-headline-centered h1 em {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 9. OPTIMIZE FOR READABILITY */
+.hero-headline-centered h1 br {
+    display: block;
+    content: '';
+    margin-bottom: 0.4em;
+}
+
+/* 10. MOBILE - BEAUTIFUL & RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-headline-centered {
+        padding: 2rem 1rem;
+    }
+    
+    .hero-headline-centered h1 {
+        font-size: 3rem;
+        line-height: 1.15;
+        letter-spacing: -0.2px;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 3rem;
+        line-height: 1.15;
+        margin-top: 0.4em;
+    }
+    
+    .hero-eyebrow {
+        font-size: 0.95rem;
+        letter-spacing: 2px;
+        margin-bottom: 1.2rem;
+    }
+}
+
+/* 11. LARGE DESKTOP - GRAND & ELEGANT */
+@media (min-width: 1200px) {
+    .hero-headline-centered h1 {
+        font-size: 4.5rem;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 4.8rem;
+    }
+    
+    .hero-eyebrow {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+    }
+}
+
+/* 12. ANIMATION - SUBTLE FADE IN */
+.hero-headline-centered h1 {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero-headline-centered h1 em {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero-eyebrow {
+    animation: fadeIn 0.6s ease-out both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 13. HIGH CONTRAST FOR MAXIMUM READABILITY */
+.hero-headline-centered h1,
+.hero-headline-centered h1 em {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+}
+
+/* 14. REMOVE ALL PREVIOUS STYLES THAT MIGHT CONFLICT */
+.hero-headline-centered h1,
+.hero-headline-centered h1 em {
+    background: none !important;
+    background-image: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    text-transform: none !important;
+    filter: none !important;
 }
