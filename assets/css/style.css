@@ -2957,3 +2957,150 @@ main {
     }
 }
 
+/* ===== MAKE HERO TITLE BIGGER ON MOBILE ===== */
+
+/* Default sizes for desktop */
+.hero-headline-centered h1 {
+    font-size: 4.5rem !important;
+}
+
+.hero-headline-centered h1 em {
+    font-size: 5rem !important;
+}
+
+/* MOBILE: Make titles BIGGER */
+@media (max-width: 768px) {
+    .hero-headline-centered h1 {
+        font-size: 4.5rem !important; /* BIGGER on mobile - was 3.2rem */
+        line-height: 1.1 !important;
+        letter-spacing: 0.5px !important;
+        margin-bottom: 25px !important;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 5rem !important; /* BIGGER on mobile - was 3.5rem */
+        margin-top: 15px !important;
+        line-height: 1.1 !important;
+    }
+    
+    /* Make the eyebrow/tagline more prominent too */
+    .hero-eyebrow {
+        font-size: 1.4rem !important; /* Slightly bigger */
+        letter-spacing: 2px !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Small phones: Adjust but keep big */
+@media (max-width: 480px) {
+    .hero-headline-centered h1 {
+        font-size: 3.8rem !important; /* Still big on small phones */
+        line-height: 1.1 !important;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 4.2rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    .hero-eyebrow {
+        font-size: 1.2rem !important;
+        letter-spacing: 1.5px !important;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+    .hero-headline-centered h1 {
+        font-size: 3.2rem !important;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 3.5rem !important;
+    }
+    
+    .hero-eyebrow {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* ===== EVEN BIGGER OPTION ===== */
+/* If you want it REALLY big on mobile, use this: */
+@media (max-width: 768px) {
+    .hero-headline-centered h1 {
+        font-size: 5rem !important; /* EXTRA BIG */
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 5.5rem !important; /* EXTRA BIG */
+    }
+    
+    .hero-eyebrow {
+        font-size: 1.5rem !important;
+        letter-spacing: 3px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-headline-centered h1 {
+        font-size: 4.2rem !important;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 4.5rem !important;
+    }
+}
+
+/* ===== OPTIONAL: Add more spacing for big text ===== */
+@media (max-width: 768px) {
+    .hero-headline-centered {
+        padding: 30px 15px !important;
+    }
+    
+    .hero-banner {
+        margin-top: 35px !important; /* More space between text and image */
+    }
+}
+
+/* ===== FIX: Ensure text doesn't overflow ===== */
+.hero-headline-centered h1,
+.hero-headline-centered h1 em {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+/* ===== MOBILE HERO OPTIMIZATION ===== */
+@media (max-width: 768px) {
+    .section.hero {
+        min-height: auto !important;
+        padding-top: 80px !important;
+        padding-bottom: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .hero-headline-centered {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px 15px !important;
+    }
+    
+    /* Make sure the text is perfectly centered */
+    .hero-headline-centered h1 br {
+        display: block !important; /* Ensure line breaks work */
+        content: "" !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+/* Prevent text from being too close to edges on mobile */
+@media (max-width: 480px) {
+    .hero-headline-centered {
+        padding: 15px 10px !important;
+    }
+    
+    .hero-headline-centered h1 {
+        padding: 0 5px !important;
+    }
+}
