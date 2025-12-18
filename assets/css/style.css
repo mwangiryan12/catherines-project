@@ -3465,3 +3465,140 @@ main {
     text-transform: none !important;
     filter: none !important;
 }
+
+/* ===== FIX: SHOW WHITE ICONS ON MOBILE TOO ===== */
+
+/* Remove the mobile hide rule */
+@media (max-width: 768px) {
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        padding: 0 40px !important; /* Keep padding for icons */
+    }
+    
+    /* SHOW ICONS ON MOBILE */
+    #i-release .section-title::before,
+    #i-release .section-title::after,
+    #i-am .section-title::before,
+    #i-am .section-title::after,
+    #i-choose .section-title::before,
+    #i-choose .section-title::after {
+        display: block !important; /* Show them! */
+        font-size: 2rem !important; /* Slightly smaller on mobile */
+        opacity: 0.6 !important;
+    }
+}
+
+/* Extra small phones: Adjust icon size */
+@media (max-width: 480px) {
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        padding: 0 35px !important;
+    }
+    
+    #i-release .section-title::before,
+    #i-release .section-title::after,
+    #i-am .section-title::before,
+    #i-am .section-title::after,
+    #i-choose .section-title::before,
+    #i-choose .section-title::after {
+        font-size: 1.8rem !important;
+    }
+}
+
+/* Very small phones: Hide only if absolutely necessary */
+@media (max-width: 360px) {
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        padding: 0 30px !important;
+    }
+    
+    #i-release .section-title::before,
+    #i-release .section-title::after,
+    #i-am .section-title::before,
+    #i-am .section-title::after,
+    #i-choose .section-title::before,
+    #i-choose .section-title::after {
+        font-size: 1.6rem !important;
+    }
+}
+
+/* ===== ALTERNATIVE: SIMPLER ICONS FOR MOBILE ===== */
+/* If the decorative icons are taking too much space on mobile */
+@media (max-width: 768px) {
+    /* Option A: Show only one icon (before) */
+    /*
+    #i-release .section-title::after,
+    #i-am .section-title::after,
+    #i-choose .section-title::after {
+        display: none !important;
+    }
+    
+    #i-release .section-title::before,
+    #i-am .section-title::before,
+    #i-choose .section-title::before {
+        position: static !important;
+        display: inline-block !important;
+        margin-right: 10px !important;
+        transform: none !important;
+        top: auto !important;
+    }
+    
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        padding: 0 !important;
+        text-align: center !important;
+    }
+    */
+    
+    /* Option B: Use smaller, simpler icons */
+    #i-release .section-title::before,
+    #i-release .section-title::after {
+        content: "•" !important; /* Simple dot */
+    }
+    
+    #i-am .section-title::before,
+    #i-am .section-title::after {
+        content: "•" !important; /* Simple dot */
+    }
+    
+    #i-choose .section-title::before,
+    #i-choose .section-title::after {
+        content: "•" !important; /* Simple dot */
+    }
+}
+
+/* ===== ENSURE ICONS ARE VISIBLE ===== */
+/* Diagnostic: Make icons obvious */
+#i-release .section-title::before,
+#i-release .section-title::after,
+#i-am .section-title::before,
+#i-am .section-title::after,
+#i-choose .section-title::before,
+#i-choose .section-title::after {
+    /* Temporary: Make icons stand out */
+    /* border: 1px solid rgba(255, 255, 255, 0.5) !important; */
+    /* background: rgba(255, 255, 255, 0.1) !important; */
+    color: #FFFFFF !important;
+    opacity: 0.7 !important;
+}
+
+/* ===== FIX Z-INDEX: Ensure icons are above other elements ===== */
+#i-release .section-title,
+#i-am .section-title,
+#i-choose .section-title {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+#i-release .section-title::before,
+#i-release .section-title::after,
+#i-am .section-title::before,
+#i-am .section-title::after,
+#i-choose .section-title::before,
+#i-choose .section-title::after {
+    z-index: 3 !important;
+}
