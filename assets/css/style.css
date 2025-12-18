@@ -80,6 +80,16 @@
   --transition-2: 0.5s ease;
   --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
 
+  /**
+   * New colors
+   */
+  --maroon-deep: #2a0000;    /* Deepest - for header/footer */
+  --maroon-rich: #3a0000;    /* Rich - main background */
+  --maroon-warm: #4a0000;    /* Warm - for contrast sections */
+  --maroon-velvet: #5a0000;  /* Velvet - for book sections */
+  --maroon-rose: #6a0000;    /* Rosy - for highlights */
+  --maroon-gold: #c9a375;    /* Accent gold */
+
 }
 
 /*-----------------------------------*\
@@ -371,38 +381,145 @@ body {
 .section.hero {
   padding-top: 150px;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--maroon-deep) 0%, var(--maroon-warm) 100%);
 }
 
-.hero-title {
-  font-size: 4.5rem;
-  line-height: 1.2;
-  margin-bottom: 40px;
+/* Fix: Make hero headline container work properly */
+.hero-headline-centered {
+  text-align: center;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.hero-eyebrow {
+  display: block;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--soft-white);
+  opacity: 0.9;
+  text-transform: uppercase;
+}
+
+.hero-headline-centered h1 {
+  font-size: 5.5rem;
+  font-weight: 800;
+  line-height: 1.1;
   color: var(--pure-white);
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  font-weight: var(--fw-700);
+  margin: 0;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.hero-headline-centered h1 em {
+  display: block;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 6rem;
+  margin-top: 10px;
+  color: var(--pure-white);
 }
 
 .hero-banner {
   border-radius: 12px;
   overflow: hidden;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 50px auto 0;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== TRILOGY INTRO ===== */
 .section.trilogy-intro {
-  padding: 100px 0;
+  background: linear-gradient(135deg, var(--maroon-warm) 0%, var(--maroon-velvet) 100%);
   text-align: center;
 }
 
-.trilogy-intro .section-title {
-  font-size: 5rem;
-  margin-bottom: 40px;
+/* Big White Header - FIXED */
+.big-white-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.white-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--pure-white);
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+}
+
+.white-main-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--pure-white);
+  margin: 0.5rem 0 1rem 0;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.white-subtitle {
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+  margin: 0;
   letter-spacing: 3px;
-  color: var(--warm-gold);
+}
+
+/* White Book Titles Grid */
+.white-titles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 0 auto 3rem auto;
+  max-width: 1100px;
+}
+
+@media (max-width: 768px) {
+  .white-titles-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.white-title-card {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.white-title-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.white-book-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--pure-white);
+  margin: 0 0 0.8rem 0;
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.white-book-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  margin: 0;
 }
 
 .trilogy-image {
@@ -423,8 +540,7 @@ body {
 
 /* ===== AUTHOR PHILOSOPHY ===== */
 .section.philosophy {
-  padding: 100px 0;
-  background-color: rgba(255, 255, 255, 0.03);
+  background: linear-gradient(135deg, var(--maroon-velvet) 0%, var(--maroon-warm) 100%);
 }
 
 .philosophy-content {
@@ -458,7 +574,16 @@ body {
 
 /* ===== BOOK SECTIONS ===== */
 .section.book {
-  padding: 120px 0;
+  background-color: var(--maroon-velvet);
+  position: relative;
+}
+
+.section.book:nth-child(odd) {
+  background: linear-gradient(135deg, var(--maroon-velvet) 0%, var(--maroon-rose) 100%);
+}
+
+.section.book:nth-child(even) {
+  background: linear-gradient(135deg, var(--maroon-rose) 0%, var(--maroon-velvet) 100%);
 }
 
 .book-content {
@@ -482,6 +607,12 @@ body {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
 .book-text .section-title {
@@ -497,372 +628,116 @@ body {
   margin-bottom: 30px;
 }
 
-.book-for {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 30px;
+/* ===== FANCY BOOK FOR SECTIONS ===== */
+.fancy-book-for {
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
+  padding: 2.5rem;
   margin: 40px 0;
-  border-left: 4px solid var(--warm-gold);
+  border: 2px solid rgba(139, 69, 19, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.book-for h3 {
-  color: var(--pure-white);
-  margin-bottom: 20px;
+.fancy-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid rgba(139, 69, 19, 0.2);
+}
+
+.fancy-header h3 {
+  color: #8B4513;
+  font-size: 1.8rem;
+  margin: 0 0 0.8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-weight: 700;
+}
+
+.leaf-icon {
   font-size: 2.2rem;
 }
 
-.book-for ul {
-  list-style: none;
-  padding-left: 0;
+.fancy-subtitle {
+  color: #666;
+  font-style: italic;
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 500;
 }
 
-.book-for li {
-  padding: 12px 0;
-  padding-left: 30px;
-  position: relative;
-  font-size: 1.6rem;
+.fancy-points {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.book-for li:before {
-  content: "—";
-  position: absolute;
-  left: 0;
-  color: var(--warm-gold);
-  font-size: 1.8rem;
+.fancy-point {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.2rem;
+  background: rgba(139, 69, 19, 0.05);
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
-/* Buttons for book sections */
-.book-btn,
-.book-buy-btn {
-  display: inline-block;
-  background: var(--pure-white);
-  color: var(--dark-maroon);
-  padding: 18px 45px;
-  border-radius: 50px;
-  font-weight: var(--fw-700);
-  text-decoration: none;
-  font-size: 1.6rem;
-  border: 2px solid var(--pure-white);
-  cursor: pointer;
-  transition: var(--transition-1);
-  margin-top: 30px;
+.fancy-point:hover {
+  background: rgba(139, 69, 19, 0.1);
+  transform: translateX(8px);
 }
 
-.book-btn:hover,
-.book-buy-btn:hover {
-  background: var(--dark-maroon);
-  color: var(--pure-white);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+.point-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
 }
 
-/* ===== FOOTER ===== */
-.footer {
+.point-content {
+  color: #000000 !important;
+  font-size: 1.8rem !important;
+  line-height: 1.5 !important;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+.point-content strong {
+  color: #8B4513 !important;
+  font-weight: 700 !important;
+  font-size: 2rem !important;
+}
+
+.fancy-footer {
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 2px solid rgba(139, 69, 19, 0.1);
   text-align: center;
-  padding: 60px 20px;
-  background: var(--darker-maroon);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-text {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: var(--soft-white);
+.fancy-footer p {
+  color: #000000 !important;
+  font-size: 1.4rem !important;
+  margin: 0;
+  font-style: italic;
+  font-weight: 500;
+  opacity: 0.8;
 }
 
-.footer-text a {
-  color: var(--warm-gold);
-  text-decoration: none;
-  transition: var(--transition-1);
+/* Book guidance */
+.book-guidance {
+  margin: 30px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border-left: 4px solid var(--warm-gold);
 }
 
-.footer-text a:hover {
-  color: var(--pure-white);
-  text-decoration: underline;
-}
-
-.copyright {
-  font-size: 1.4rem;
-  color: rgba(255, 255, 255, 0.5);
-  margin-top: 20px;
-}
-
-/*-----------------------------------*\
-  #MEDIA QUERIES
-\*-----------------------------------*/
-
-/**
- * responsive for large than 575px screen
- */
-@media (min-width: 575px) {
-  .container,
-  .header,
-  .navbar {
-    max-width: 540px;
-    width: 100%;
-    margin-inline: auto;
-  }
-  
-  .hero-title { font-size: 3.5rem; }
-  .trilogy-intro .section-title { font-size: 4rem; }
-  .book-text .section-title { font-size: 3.5rem; }
-}
-
-/**
- * responsive for large than 768px screen
- */
-@media (min-width: 768px) {
-  .container,
-  .header,
-  .navbar { max-width: 720px; }
-  
-  .grid-list { grid-template-columns: 1fr 1fr; }
-  
-  .nav-toggle-btn { display: none; }
-  .navbar,
-  .navbar.active { 
-    all: unset;
-    display: block !important;
-  }
-  
-  .navbar-list {
-    margin-block-end: 0;
-    display: flex;
-    gap: 30px;
-    padding: 0;
-  }
-  
-  .navbar-link {
-    padding: 0;
-    border: none;
-    font-size: 1.6rem;
-  }
-  
-  .navbar-link:is(:hover, :focus) { 
-    padding-left: 0;
-    transform: translateY(-2px);
-  }
-  
-  .hero-title { font-size: 4rem; }
-  .trilogy-intro .section-title { font-size: 4.5rem; }
-}
-
-/**
- * responsive for large than 992px screen
- */
-@media (min-width: 992px) {
-  .container,
-  .header,
-  .navbar { max-width: 960px; }
-  
-  .grid-list { grid-template-columns: repeat(3, 1fr); }
-  
-  .hero-title { font-size: 4.5rem; }
-  .trilogy-intro .section-title { font-size: 5rem; }
-  .book-text .section-title { font-size: 4rem; }
-}
-
-/**
- * responsive for large than 1200px screen
- */
-@media (min-width: 1200px) {
-  .container,
-  .header,
-  .navbar { max-width: 1140px; }
-  
-  .hero-title { font-size: 5rem; }
-  .trilogy-intro .section-title { font-size: 5.5rem; }
-  .book-text .section-title { font-size: 4.5rem; }
-}
-
-/**
- * MOBILE STYLES (max-width: 768px)
- */
-@media (max-width: 768px) {
-  body {
-    padding-top: 80px;
-  }
-  
-  .header {
-    padding: 15px 0;
-  }
-  
-  .logo {
-    font-size: 2.8rem;
-  }
-  
-  .hero {
-    padding-top: 120px;
-  }
-  
-  .hero-title {
-    font-size: 2.8rem;
-    padding: 0 15px;
-    margin-bottom: 30px;
-  }
-  
-  .section {
-    padding: 60px 20px;
-  }
-  
-  /* Stack all grid layouts vertically on mobile */
-  .philosophy-content,
-  .book-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  /* Reset order for mobile */
-  .book-content-reverse .book-text,
-  .book-content-reverse .book-cover {
-    order: unset;
-  }
-  
-  /* Center images and adjust text */
-  .philosophy-banner,
-  .book-cover,
-  .hero-banner,
-  .trilogy-image {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  
-  .book-text {
-    text-align: center;
-  }
-  
-  .book-for {
-    text-align: left;
-    padding: 20px;
-  }
-  
-  .trilogy-intro .section-title {
-    font-size: 3.5rem;
-  }
-  
-  .trilogy-intro .section-text {
-    font-size: 1.6rem;
-  }
-  
-  .philosophy-text,
-  .book-text .section-text {
-    font-size: 1.6rem;
-  }
-  
-  .book-text .section-title {
-    font-size: 3.2rem;
-  }
-  
-  .book-for h3 {
-    font-size: 1.8rem;
-  }
-  
-  .book-for li {
-    font-size: 1.4rem;
-  }
-  
-  .btn,
-  .book-btn,
-  .book-buy-btn,
-  .btn-primary {
-    padding: 15px 35px;
-    font-size: 1.4rem;
-    width: 100%;
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .footer-text {
-    font-size: 1.6rem;
-  }
-}
-
-/**
- * Extra small devices (phones, 480px and down)
- */
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  
-  .trilogy-intro .section-title {
-    font-size: 2.8rem;
-  }
-  
-  .book-text .section-title {
-    font-size: 2.5rem;
-  }
-  
-  .philosophy-text,
-  .book-text .section-text,
-  .trilogy-intro .section-text {
-    font-size: 1.4rem;
-  }
-  
-  .section {
-    padding: 50px 15px;
-  }
-  
-  .logo {
-    font-size: 2.4rem;
-  }
-  
-  .navbar-link {
-    font-size: 1.4rem;
-    padding: 10px 0;
-  }
-  
-  .btn,
-  .book-btn,
-  .book-buy-btn,
-  .btn-primary {
-    padding: 14px 30px;
-    font-size: 1.3rem;
-  }
-}
-
-/* Fade-in animation for sections */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* Mobile styles for bundle */
-@media (max-width: 768px) {
-  .bundle-includes {
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .plus-sign {
-    margin: 10px 0;
-    transform: rotate(90deg);
-  }
-  
-  .original-price {
-    font-size: 2.8rem;
-  }
-  
-  .bundle-btn {
-    font-size: 1.6rem;
-    padding: 18px 30px;
-    width: 100%;
-    max-width: 400px;
-  }
-}/* ===== BUNDLE SECTION ===== */
+/* ===== BUNDLE SECTION ===== */
 .section.bundle {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 100px 20px;
+  background: linear-gradient(135deg, var(--maroon-rose) 0%, var(--maroon-velvet) 100%);
   text-align: center;
-  border-top: 1px solid rgba(201, 163, 117, 0.2);
 }
 
 .bundle-content {
@@ -936,338 +811,794 @@ body {
   font-style: italic;
 }
 
-/* Mobile styles for bundle */
-@media (max-width: 768px) {
-  .section.bundle {
-    padding: 70px 20px;
-  }
-  
-  .bundle-books {
-    gap: 30px;
-  }
-  
-  .bundle-book {
-    max-width: 130px;
-  }
-  
-  .bundle-cover {
-    width: 120px;
-    height: 180px;
-  }
-  
-  .bundle-btn {
-    font-size: 1.6rem;
-    padding: 18px 40px;
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--darker-maroon);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-text {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--soft-white);
+}
+
+.footer-text a {
+  color: var(--warm-gold);
+  text-decoration: none;
+  transition: var(--transition-1);
+}
+
+.footer-text a:hover {
+  color: var(--pure-white);
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 20px;
+}
+
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+@media (min-width: 575px) {
+  .container,
+  .header,
+  .navbar {
+    max-width: 540px;
     width: 100%;
-    max-width: 400px;
-  }
-  
-  .bundle-text {
-    font-size: 1.6rem;
+    margin-inline: auto;
   }
 }
 
-@media (max-width: 480px) {
-  .bundle-books {
-    gap: 20px;
+@media (min-width: 768px) {
+  .container,
+  .header,
+  .navbar { max-width: 720px; }
+  
+  .grid-list { grid-template-columns: 1fr 1fr; }
+  
+  .nav-toggle-btn { display: none; }
+  .navbar,
+  .navbar.active { 
+    all: unset;
+    display: block !important;
   }
   
-  .bundle-book {
-    max-width: 110px;
+  .navbar-list {
+    margin-block-end: 0;
+    display: flex;
+    gap: 30px;
+    padding: 0;
   }
   
-  .bundle-cover {
-    width: 100px;
-    height: 150px;
+  .navbar-link {
+    padding: 0;
+    border: none;
+    font-size: 1.6rem;
   }
   
-  .bundle-book h3 {
+  .navbar-link:is(:hover, :focus) { 
+    padding-left: 0;
+    transform: translateY(-2px);
+  }
+}
+
+@media (min-width: 992px) {
+  .container,
+  .header,
+  .navbar { max-width: 960px; }
+  
+  .grid-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .header,
+  .navbar { max-width: 1140px; }
+}
+
+/**
+ * MOBILE STYLES (max-width: 768px)
+ */
+@media (max-width: 768px) {
+  body {
+    padding-top: 80px;
+  }
+  
+  .header {
+    padding: 15px 0;
+  }
+  
+  .logo {
+    font-size: 2.8rem;
+  }
+  
+  .hero {
+    padding-top: 120px;
+    min-height: auto;
+  }
+  
+  .hero-headline-centered h1 {
+    font-size: 3.5rem;
+    padding: 0 15px;
+    margin-bottom: 30px;
+  }
+  
+  .hero-headline-centered h1 em {
+    font-size: 4rem;
+  }
+  
+  .hero-eyebrow {
     font-size: 1.4rem;
   }
-}/* ===== BIG & FLAMBOYANT TYPOGRAPHY ===== */
-
-/* Hero Title - EXTRA BOLD & LARGE */
-.hero-title {
-  font-size: 5.5rem !important;
-  font-weight: 900 !important;
-  line-height: 1.1 !important;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
-  margin-bottom: 40px !important;
-  background: linear-gradient(45deg, #ffffff 30%, #f0e6d2 70%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Section Titles - DRAMATIC */
-.section-title {
-  font-size: 4.5rem !important;
-  font-weight: 900 !important;
-  line-height: 1.1 !important;
-  letter-spacing: 0.5px;
-  margin-bottom: 30px !important;
-  position: relative;
-  display: inline-block;
-}
-
-/* Add decorative underline to section titles */
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--warm-gold), transparent);
-  border-radius: 2px;
-}
-
-/* Trilogy Intro Title - SPECIAL STYLE */
-.trilogy-intro .section-title {
-  font-size: 6rem !important;
-  font-weight: 900 !important;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  background: linear-gradient(45deg, var(--warm-gold) 30%, #ffffff 70%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Book Titles - BOLD & PROMINENT */
-.book-text .section-title {
-  font-size: 5rem !important;
-  font-weight: 900 !important;
-  letter-spacing: 1px;
-  margin-bottom: 40px !important;
-  position: relative;
-  padding-bottom: 20px;
-}
-
-.book-text .section-title::before {
-  content: "✦";
-  position: absolute;
-  left: -40px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--warm-gold);
-  font-size: 2rem;
-}
-
-.book-text .section-title::after {
-  content: "✦";
-  position: absolute;
-  right: -40px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--warm-gold);
-  font-size: 2rem;
-}
-
-/* Bundle Title - EXTRA FLAMBOYANT */
-.bundle-content .section-title {
-  font-size: 5.5rem !important;
-  font-weight: 900 !important;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background: linear-gradient(45deg, var(--warm-gold), #ffffff, var(--warm-gold));
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shine 3s linear infinite;
-}
-
-@keyframes shine {
-  to {
-    background-position: 200% center;
-  }
-}
-
-/* Headlines within content */
-.book-for h3 {
-  font-size: 2.2rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--warm-gold) !important;
-  border-left: 4px solid var(--warm-gold);
-  padding-left: 15px;
-  margin-bottom: 25px !important;
-}
-
-/* Strong text emphasis */
-strong {
-  font-weight: 700 !important;
-  color: var(--pure-white) !important;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Italic text with flair */
-em {
-  font-style: italic;
-  color: var(--warm-gold);
-  font-weight: 500;
-}
-
-/* ===== MOBILE RESPONSIVENESS ===== */
-@media (max-width: 992px) {
-  .hero-title {
-    font-size: 4.5rem !important;
+  
+  .section {
+    padding: 60px 20px;
   }
   
-  .trilogy-intro .section-title {
-    font-size: 5rem !important;
+  /* Stack all grid layouts vertically on mobile */
+  .philosophy-content,
+  .book-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  /* Reset order for mobile */
+  .book-content-reverse .book-text,
+  .book-content-reverse .book-cover {
+    order: unset;
+  }
+  
+  /* Center images and adjust text */
+  .philosophy-banner,
+  .book-cover,
+  .hero-banner,
+  .trilogy-image {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .book-text {
+    text-align: center;
+  }
+  
+  .white-main-title {
+    font-size: 3rem;
+  }
+  
+  .white-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .white-book-title {
+    font-size: 2.2rem;
+  }
+  
+  .white-book-subtitle {
+    font-size: 1rem;
+  }
+  
+  .trilogy-intro .section-text {
+    font-size: 1.6rem;
+  }
+  
+  .philosophy-text,
+  .book-text .section-text {
+    font-size: 1.6rem;
   }
   
   .book-text .section-title {
-    font-size: 4rem !important;
+    font-size: 3.2rem;
   }
   
-  .bundle-content .section-title {
-    font-size: 4.5rem !important;
+  /* Fancy book for section on mobile */
+  .fancy-book-for {
+    padding: 1.5rem;
   }
+  
+  .fancy-header h3 {
+    font-size: 1.6rem;
+  }
+  
+  .point-content {
+    font-size: 1.6rem !important;
+  }
+  
+  .point-content strong {
+    font-size: 1.8rem !important;
+  }
+  
+  .fancy-footer p {
+    font-size: 1.2rem !important;
+  }
+  
+  .btn,
+  .book-btn,
+  .book-buy-btn,
+  .btn-primary {
+    padding: 15px 35px;
+    font-size: 1.4rem;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .footer-text {
+    font-size: 1.6rem;
+  }
+}
+
+/**
+ * Extra small devices (phones, 480px and down)
+ */
+@media (max-width: 480px) {
+  .hero-headline-centered h1 {
+    font-size: 2.8rem;
+  }
+  
+  .hero-headline-centered h1 em {
+    font-size: 3.2rem;
+  }
+  
+  .hero-eyebrow {
+    font-size: 1.2rem;
+  }
+  
+  .white-main-title {
+    font-size: 2.5rem;
+  }
+  
+  .white-subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+  
+  .white-book-title {
+    font-size: 1.8rem;
+  }
+  
+  .book-text .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .section {
+    padding: 50px 15px;
+  }
+  
+  .logo {
+    font-size: 2.4rem;
+  }
+  
+  .navbar-link {
+    font-size: 1.4rem;
+    padding: 10px 0;
+  }
+  
+  .btn,
+  .book-btn,
+  .book-buy-btn,
+  .btn-primary {
+    padding: 14px 30px;
+    font-size: 1.3rem;
+  }
+}
+
+/* Fix for fancy text - This is the nuclear option to ensure text is visible */
+#i-release .fancy-book-for .point-content,
+#i-am .fancy-book-for .point-content,
+#i-choose .fancy-book-for .point-content {
+  font-size: 1.8rem !important;
+  color: #000000 !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+}
+
+#i-release .fancy-book-for .point-content strong,
+#i-am .fancy-book-for .point-content strong,
+#i-choose .fancy-book-for .point-content strong {
+  font-size: 2rem !important;
+  color: #8B4513 !important;
+  font-weight: 700 !important;
+}
+
+#i-release .fancy-book-for .fancy-footer p,
+#i-am .fancy-book-for .fancy-footer p,
+#i-choose .fancy-book-for .fancy-footer p {
+  font-size: 1.4rem !important;
+  color: #000000 !important;
+  opacity: 0.8 !important;
+}
+
+/* Fix section padding */
+.section {
+  padding: 80px 0;
+}
+
+/* Remove problematic conflicting styles */
+/* Remove these lines if they exist in your original */
+.container, main, .content-wrapper {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+/* End of problematic styles */
+
+/* ===== FANCY BOOK SECTION TITLES - RESTORED ===== */
+
+/* I RELEASE Section Title - Green Theme */
+#i-release .section-title {
+    font-size: 5.5rem !important;
+    font-weight: 900 !important;
+    color: var(--pure-white) !important;
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 40px !important;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #4CAF50, #81C784, #4CAF50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#i-release .section-title::before {
+    content: "🍃";
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    opacity: 0.7;
+}
+
+#i-release .section-title::after {
+    content: "🍃";
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    opacity: 0.7;
+}
+
+#i-release .section-title::before,
+#i-release .section-title::after {
+    display: block; /* Show on desktop */
+}
+
+/* I AM Section Title - Blue Theme */
+#i-am .section-title {
+    font-size: 5.5rem !important;
+    font-weight: 900 !important;
+    color: var(--pure-white) !important;
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 40px !important;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #2196F3, #64B5F6, #2196F3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#i-am .section-title::before {
+    content: "✨";
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    opacity: 0.7;
+}
+
+#i-am .section-title::after {
+    content: "✨";
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    opacity: 0.7;
+}
+
+/* I CHOOSE Section Title - Purple Theme */
+#i-choose .section-title {
+    font-size: 5.5rem !important;
+    font-weight: 900 !important;
+    color: var(--pure-white) !important;
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 40px !important;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #9C27B0, #BA68C8, #9C27B0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#i-choose .section-title::before {
+    content: "🎯";
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    opacity: 0.7;
+}
+
+#i-choose .section-title::after {
+    content: "🎯";
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    opacity: 0.7;
+}
+
+/* Add decorative underline for all book titles */
+#i-release .section-title,
+#i-am .section-title,
+#i-choose .section-title {
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Special gradient effects for each */
+#i-release .section-title {
+    border-image: linear-gradient(90deg, transparent, #4CAF50, transparent) 1;
+}
+
+#i-am .section-title {
+    border-image: linear-gradient(90deg, transparent, #2196F3, transparent) 1;
+}
+
+#i-choose .section-title {
+    border-image: linear-gradient(90deg, transparent, #9C27B0, transparent) 1;
+}
+
+/* ===== FANCY HERO TITLE - RESTORED ===== */
+.hero-headline-centered h1 {
+    font-size: 6.5rem !important;
+    font-weight: 900 !important;
+    line-height: 1.1 !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 
+        4px 4px 0px rgba(0, 0, 0, 0.5),
+        8px 8px 15px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px !important;
+    background: linear-gradient(45deg, #ffffff 0%, #f0e6d2 50%, var(--maroon-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: textShine 3s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.hero-headline-centered h1 em {
+    display: block;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 7rem !important;
+    margin-top: 15px;
+    background: linear-gradient(45deg, var(--maroon-gold), #ffd700, var(--maroon-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===== FANCY TRILOGY HEADER - RESTORED ===== */
+.trilogy-intro .section-title {
+    font-size: 6rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, var(--maroon-gold), #ffffff, var(--maroon-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.trilogy-intro .section-title::before,
+.trilogy-intro .section-title::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: var(--maroon-gold);
+    opacity: 0.7;
+}
+
+.trilogy-intro .section-title::before {
+    left: -40px;
+}
+
+.trilogy-intro .section-title::after {
+    right: -40px;
+}
+
+/* ===== FANCY BUNDLE TITLE - RESTORED ===== */
+.bundle-content .section-title {
+    font-size: 6.5rem !important;
+    font-weight: 1000 !important;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(45deg, 
+        var(--maroon-gold) 0%, 
+        #ffffff 25%, 
+        var(--maroon-gold) 50%, 
+        #ffffff 75%, 
+        var(--maroon-gold) 100%);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: bundleShine 4s linear infinite;
+    text-shadow: 0 0 30px rgba(201, 163, 117, 0.3);
+}
+
+@keyframes bundleShine {
+    to {
+        background-position: 300% center;
+    }
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR FANCY TITLES ===== */
+@media (max-width: 1200px) {
+    .hero-headline-centered h1 {
+        font-size: 5.5rem !important;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 6rem !important;
+    }
+    
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        font-size: 4.5rem !important;
+    }
+    
+    .trilogy-intro .section-title {
+        font-size: 5rem !important;
+    }
+    
+    .bundle-content .section-title {
+        font-size: 5.5rem !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-headline-centered h1 {
+        font-size: 4.5rem !important;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 5rem !important;
+    }
+    
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        font-size: 3.8rem !important;
+    }
+    
+    #i-release .section-title::before,
+    #i-release .section-title::after,
+    #i-am .section-title::before,
+    #i-am .section-title::after,
+    #i-choose .section-title::before,
+    #i-choose .section-title::after {
+        font-size: 2.2rem !important;
+        position: static;
+        transform: none;
+        display: inline-block;
+        margin: 0 10px;
+    }
+    
+    .trilogy-intro .section-title {
+        font-size: 4.2rem !important;
+    }
+    
+    .trilogy-intro .section-title::before,
+    .trilogy-intro .section-title::after {
+        display: none;
+    }
+    
+    .bundle-content .section-title {
+        font-size: 4.5rem !important;
+    }
 }
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 3.5rem !important;
-    letter-spacing: 0.5px;
-  }
-  
-  .section-title {
-    font-size: 3.5rem !important;
-  }
-  
-  .trilogy-intro .section-title {
-    font-size: 4rem !important;
-  }
-  
-  .book-text .section-title {
-    font-size: 3.2rem !important;
-  }
-  
-  .book-text .section-title::before,
-  .book-text .section-title::after {
-    display: none; /* Hide decorative stars on mobile */
-  }
-  
-  .bundle-content .section-title {
-    font-size: 3.5rem !important;
-  }
-  
-  .book-for h3 {
-    font-size: 1.8rem !important;
-  }
+    .hero-headline-centered h1 {
+        font-size: 3.8rem !important;
+        letter-spacing: 1px;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 4.2rem !important;
+    }
+    
+    .hero-eyebrow {
+        font-size: 1.2rem !important;
+    }
+    
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        font-size: 3.2rem !important;
+    }
+    
+    #i-release .section-title::before,
+    #i-release .section-title::after,
+    #i-am .section-title::before,
+    #i-am .section-title::after,
+    #i-choose .section-title::before,
+    #i-choose .section-title::after {
+        display: none; /* Hide icons on mobile for cleaner look */
+    }
+    
+    .trilogy-intro .section-title {
+        font-size: 3.5rem !important;
+    }
+    
+    .bundle-content .section-title {
+        font-size: 3.8rem !important;
+    }
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 2.8rem !important;
-  }
-  
-  .section-title {
-    font-size: 2.8rem !important;
-  }
-  
-  .trilogy-intro .section-title {
-    font-size: 3.2rem !important;
-  }
-  
-  .book-text .section-title {
-    font-size: 2.8rem !important;
-  }
-  
-  .bundle-content .section-title {
-    font-size: 3rem !important;
-  }
+    .hero-headline-centered h1 {
+        font-size: 3rem !important;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 3.3rem !important;
+    }
+    
+    .hero-eyebrow {
+        font-size: 1rem !important;
+        letter-spacing: 1px;
+    }
+    
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        font-size: 2.8rem !important;
+    }
+    
+    .trilogy-intro .section-title {
+        font-size: 3rem !important;
+    }
+    
+    .bundle-content .section-title {
+        font-size: 3.2rem !important;
+    }
 }
 
-/* ===== ENHANCED TEXT EFFECTS ===== */
-/* Optional: Add a subtle glow to main headlines */
-.hero-title,
-.trilogy-intro .section-title,
-.bundle-content .section-title {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+/* ===== ENHANCE FANCY TEXT CONTRAST ===== */
+.fancy-book-for {
+    background: rgba(255, 255, 255, 0.98) !important; /* Brighter white */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important; /* Stronger shadow */
+    border: 2px solid rgba(139, 69, 19, 0.3) !important; /* Darker border */
 }
 
-/* Make sure text is readable against dark background */
-.section-title,
-.hero-title,
-.book-text .section-title,
-.bundle-content .section-title {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-/* maroon backgrounds */
-/* ===== ENHANCED MAROON COLOR PALETTE ===== */
-:root {
-  /* Primary Maroons */
-  --maroon-deep: #2a0000;    /* Deepest - for header/footer */
-  --maroon-rich: #3a0000;    /* Rich - main background */
-  --maroon-warm: #4a0000;    /* Warm - for contrast sections */
-  --maroon-velvet: #5a0000;  /* Velvet - for book sections */
-  --maroon-rose: #6a0000;    /* Rosy - for highlights */
-  --maroon-gold: #c9a375;    /* Accent gold */
-  --soft-white: #f0e6d2;
-  --pure-white: #ffffff;
+.fancy-point {
+    background: rgba(139, 69, 19, 0.08) !important; /* More visible background */
 }
 
-/* Update body background */
-body {
-  background-color: var(--maroon-rich);
+.point-content {
+    font-size: 1.8rem !important;
+    color: #222222 !important; /* Darker gray for better readability */
+    font-weight: 600 !important;
 }
 
-/* Update header/footer */
-.header {
-  background-color: var(--maroon-deep);
+.point-content strong {
+    font-size: 2rem !important;
+    color: #8B4513 !important;
+    font-weight: 800 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.footer {
-  background-color: var(--maroon-deep);
+.fancy-footer p {
+    font-size: 1.4rem !important;
+    color: #444444 !important; /* Darker for readability */
+    font-weight: 500 !important;
 }
 
-/* Different sections get different maroons */
-.section.hero {
-  background: linear-gradient(135deg, var(--maroon-deep) 0%, var(--maroon-warm) 100%);
+/* Color themes for each book's fancy section */
+#i-release .fancy-book-for {
+    border-color: rgba(76, 175, 80, 0.3) !important;
 }
 
-.section.trilogy-intro {
-  background: linear-gradient(135deg, var(--maroon-warm) 0%, var(--maroon-velvet) 100%);
+#i-release .point-content strong {
+    color: #4CAF50 !important;
+}
+
+#i-am .fancy-book-for {
+    border-color: rgba(33, 150, 243, 0.3) !important;
+}
+
+#i-am .point-content strong {
+    color: #2196F3 !important;
+}
+
+#i-choose .fancy-book-for {
+    border-color: rgba(156, 39, 176, 0.3) !important;
+}
+
+#i-choose .point-content strong {
+    color: #9C27B0 !important;
+}
+
+
+/* ===== NON-CONFLICTING ENHANCEMENTS ===== */
+
+/* 1. Smooth scroll padding for anchor links */
+html {
+  scroll-padding-top: 100px;
+}
+
+/* 2. Subtle hover effects for images */
+.img-cover {
+  transition: transform 0.3s ease;
+}
+
+.img-cover:hover {
+  transform: scale(1.02);
+}
+
+/* 3. Enhanced button hover effects */
+.btn-primary {
   position: relative;
   overflow: hidden;
-}
-
-.section.trilogy-intro::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 30% 50%, var(--maroon-rose) 0%, transparent 50%);
-  opacity: 0.3;
   z-index: 1;
 }
 
-.section.philosophy {
-  background: linear-gradient(135deg, var(--maroon-velvet) 0%, var(--maroon-warm) 100%);
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--warm-gold);
+  transition: left 0.3s ease;
+  z-index: -1;
 }
 
-/* Book sections - will be animated with scroll */
-.section.book {
-  background-color: var(--maroon-velvet);
-  transition: background-color 0.8s ease, transform 0.5s ease;
-  position: relative;
-  overflow: hidden;
+.btn-primary:hover::before {
+  left: 0;
 }
 
-/* Subtle pattern overlay */
-.section.book::before {
+.btn-primary:hover {
+  color: var(--dark-maroon) !important;
+}
+
+/* 4. Subtle background patterns for sections */
+.section.book:nth-child(odd)::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1280,319 +1611,1349 @@ body {
   background-size: 50px 50px;
   z-index: 1;
   pointer-events: none;
+  opacity: 0.3;
 }
 
-.section.bundle {
-  background: linear-gradient(135deg, var(--maroon-rose) 0%, var(--maroon-velvet) 100%);
-  position: relative;
+/* 5. Enhanced text selection */
+::selection {
+  background-color: var(--warm-gold);
+  color: var(--dark-maroon);
+  text-shadow: none;
 }
 
-.section.bundle::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 100%);
-  z-index: 1;
-  pointer-events: none;
+/* 6. Smooth section transitions */
+.section {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
 }
 
-/* Ensure content stays above patterns */
-.section .container {
-  position: relative;
-  z-index: 2;
-}
-/* bigger topography */
-/* ===== EXTRA LARGE & BOLD TYPOGRAPHY ===== */
-.hero-title {
-  font-size: 7rem !important;
-  font-weight: 1000 !important;
-  line-height: 1 !important;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 
-    4px 4px 0px rgba(0, 0, 0, 0.5),
-    8px 8px 15px rgba(0, 0, 0, 0.3);
-  margin-bottom: 50px !important;
-  background: linear-gradient(45deg, #ffffff 0%, #f0e6d2 50%, var(--maroon-gold) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% auto;
-  animation: textShine 3s ease-in-out infinite alternate;
-}
-
-@keyframes textShine {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-.trilogy-intro .section-title {
-  font-size: 8rem !important;
-  font-weight: 1000 !important;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  background: linear-gradient(45deg, var(--maroon-gold), #ffd700, var(--maroon-gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
-  position: relative;
-  display: inline-block;
-  padding: 0 20px;
-}
-
-.trilogy-intro .section-title::before,
-.trilogy-intro .section-title::after {
-  content: '✦';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 3rem;
-  color: var(--maroon-gold);
-  opacity: 0.7;
-}
-
-.trilogy-intro .section-title::before {
-  left: -40px;
-}
-
-.trilogy-intro .section-title::after {
-  right: -40px;
-}
-
-.book-text .section-title {
-  font-size: 6.5rem !important;
-  font-weight: 1000 !important;
-  letter-spacing: 1.5px;
-  margin-bottom: 50px !important;
-  position: relative;
-  padding: 20px 0;
-  border-bottom: 3px solid var(--maroon-gold);
-}
-
-.bundle-content .section-title {
-  font-size: 7rem !important;
-  font-weight: 1000 !important;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  background: linear-gradient(45deg, 
-    var(--maroon-gold) 0%, 
-    #ffffff 25%, 
-    var(--maroon-gold) 50%, 
-    #ffffff 75%, 
-    var(--maroon-gold) 100%);
-  background-size: 300% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: bundleShine 4s linear infinite;
-  text-shadow: 0 0 30px rgba(201, 163, 117, 0.3);
-}
-
-@keyframes bundleShine {
+@keyframes fadeInUp {
   to {
-    background-position: 300% center;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Make ALL text bigger */
-.section-text {
-  font-size: 2.2rem !important;
-  line-height: 1.8 !important;
+/* 7. Custom focus styles */
+:focus-visible {
+  outline: 2px solid var(--warm-gold);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
-.philosophy-text {
-  font-size: 2.4rem !important;
-  line-height: 1.9 !important;
+/* 8. Enhanced card shadows */
+.fancy-book-for,
+.white-title-card,
+.book-for {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.book-for h3 {
-  font-size: 2.8rem !important;
-  font-weight: 800 !important;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--maroon-gold) !important;
-  padding: 15px 0;
-  border-bottom: 2px solid var(--maroon-gold);
-  margin-bottom: 30px !important;
+.fancy-book-for:hover,
+.white-title-card:hover,
+.book-for:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-5px);
 }
 
-/* Bigger buttons */
-.btn-primary,
-.bundle-btn,
-.book-btn {
-  font-size: 2rem !important;
-  padding: 25px 70px !important;
-  font-weight: 800 !important;
-  letter-spacing: 1px;
-  border-width: 3px !important;
+/* 9. Subtle text animations */
+.section-title,
+.hero-headline-centered h1,
+.trilogy-intro .section-title {
+  animation: fadeInUp 1s ease 0.3s both;
 }
 
-/* Responsive scaling */
-@media (max-width: 1200px) {
-  .hero-title { font-size: 6rem !important; }
-  .trilogy-intro .section-title { font-size: 6.5rem !important; }
-  .book-text .section-title { font-size: 5.5rem !important; }
-  .bundle-content .section-title { font-size: 6rem !important; }
+/* 10. Staggered animation for grid items */
+.white-title-card,
+.fancy-point,
+.bundle-book {
+  animation: fadeInUp 0.6s ease both;
 }
 
-@media (max-width: 992px) {
-  .hero-title { font-size: 5rem !important; }
-  .trilogy-intro .section-title { font-size: 5.5rem !important; }
-  .book-text .section-title { font-size: 4.5rem !important; }
-  .bundle-content .section-title { font-size: 5rem !important; }
-  .section-text { font-size: 1.8rem !important; }
+.white-title-card:nth-child(1) { animation-delay: 0.1s; }
+.white-title-card:nth-child(2) { animation-delay: 0.2s; }
+.white-title-card:nth-child(3) { animation-delay: 0.3s; }
+
+.fancy-point:nth-child(1) { animation-delay: 0.1s; }
+.fancy-point:nth-child(2) { animation-delay: 0.2s; }
+.fancy-point:nth-child(3) { animation-delay: 0.3s; }
+
+/* 11. Smooth opacity transition for body fade-in */
+body {
+  animation: fadeInPage 0.8s ease-in forwards;
 }
 
+@keyframes fadeInPage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 12. Enhanced scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker-maroon);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--light-maroon);
+  border-radius: 6px;
+  border: 2px solid var(--darker-maroon);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--warm-gold);
+}
+
+/* 13. Print styles */
+@media print {
+  .header,
+  .btn-primary,
+  .bundle-btn,
+  .footer {
+    display: none;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* 14. Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 15. Accessibility: High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --dark-maroon: #000000;
+    --warm-gold: #ffff00;
+    --soft-white: #ffffff;
+  }
+  
+  .section-title,
+  .hero-headline-centered h1 {
+    text-shadow: 0 0 0 !important;
+    -webkit-text-fill-color: var(--soft-white) !important;
+    background: none !important;
+  }
+}
+
+/* 16. Loading state */
+.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 17. Tooltip for buttons */
+.btn-primary[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--darker-maroon);
+  color: var(--soft-white);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  z-index: 1000;
+}
+
+.btn-primary[title]:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--darker-maroon);
+  margin-bottom: -4px;
+}
+
+/* 18. Keyboard navigation focus */
+.navbar-link:focus,
+.btn-primary:focus,
+a:focus {
+  box-shadow: 0 0 0 3px rgba(201, 163, 117, 0.5);
+}
+
+/* 19. Lazy loading fade-in */
+.img-cover[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.img-cover[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* 20. Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--warm-gold);
+  color: var(--dark-maroon);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  cursor: pointer;
+  border: 2px solid var(--warm-gold);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: var(--dark-maroon);
+  color: var(--warm-gold);
+  transform: translateY(-5px);
+}
+
+/* 21. Newsletter signup form enhancements */
+input:focus,
+textarea:focus {
+  border-color: var(--warm-gold) !important;
+  box-shadow: 0 0 0 3px rgba(201, 163, 117, 0.1) !important;
+}
+
+/* 22. Social media icons */
+.social-icons a {
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: translateY(-3px);
+}
+
+/* 23. Price display */
+.original-price {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.discount-price {
+  color: var(--warm-gold);
+  font-weight: bold;
+}
+
+/* 24. Badge for new items */
+.new-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--warm-gold);
+  color: var(--dark-maroon);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 1;
+}
+
+/* 25. Page loader (optional) */
+#page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--dark-maroon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+#page-loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(201, 163, 117, 0.3);
+  border-top-color: var(--warm-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== FIX: REMOVE UPPERCASE FOR TITLES ===== */
+
+/* Fix hero title - keep original case */
+.hero-headline-centered h1 {
+    text-transform: none !important; /* Remove uppercase */
+    font-size: 5.5rem !important;
+    font-weight: 900 !important;
+    line-height: 1.1 !important;
+    letter-spacing: 2px;
+    text-shadow: 
+        4px 4px 0px rgba(0, 0, 0, 0.5),
+        8px 8px 15px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px !important;
+    background: linear-gradient(45deg, #ffffff 0%, #f0e6d2 50%, var(--maroon-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: textShine 3s ease-in-out infinite alternate;
+}
+
+.hero-headline-centered h1 em {
+    text-transform: none !important; /* Remove uppercase */
+    display: block;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 6rem !important;
+    margin-top: 15px;
+    background: linear-gradient(45deg, var(--maroon-gold), #ffd700, var(--maroon-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Fix book titles - remove uppercase */
+#i-release .section-title,
+#i-am .section-title,
+#i-choose .section-title {
+    text-transform: none !important; /* Remove uppercase */
+    font-size: 5.5rem !important;
+    font-weight: 900 !important;
+    color: var(--pure-white) !important;
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 40px !important;
+    letter-spacing: 1.5px;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Fix trilogy intro title */
+.trilogy-intro .section-title {
+    text-transform: none !important; /* Remove uppercase */
+    font-size: 6rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, var(--maroon-gold), #ffffff, var(--maroon-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+/* Fix bundle title */
+.bundle-content .section-title {
+    text-transform: none !important; /* Remove uppercase */
+    font-size: 6.5rem !important;
+    font-weight: 1000 !important;
+    letter-spacing: 3px;
+    background: linear-gradient(45deg, 
+        var(--maroon-gold) 0%, 
+        #ffffff 25%, 
+        var(--maroon-gold) 50%, 
+        #ffffff 75%, 
+        var(--maroon-gold) 100%);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: bundleShine 4s linear infinite;
+    text-shadow: 0 0 30px rgba(201, 163, 117, 0.3);
+}
+
+/* Fix the eyebrow/header text to match your image */
+.hero-eyebrow {
+    text-transform: uppercase !important; /* This should stay uppercase */
+    display: block;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--soft-white);
+    opacity: 0.9;
+}
+
+/* Fix white titles in trilogy section */
+.white-badge {
+    text-transform: uppercase !important; /* This should stay uppercase */
+}
+
+.white-main-title {
+    text-transform: none !important; /* Remove uppercase */
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin: 0.5rem 0 1rem 0;
+    letter-spacing: 1px;
+    line-height: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.white-book-title {
+    text-transform: none !important; /* Remove uppercase */
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin: 0 0 0.8rem 0;
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile responsiveness with proper case */
 @media (max-width: 768px) {
-  .hero-title { font-size: 4rem !important; letter-spacing: 1px; }
-  .trilogy-intro .section-title { font-size: 4.5rem !important; }
-  .book-text .section-title { font-size: 3.8rem !important; }
-  .bundle-content .section-title { font-size: 4.2rem !important; }
-  .section-text { font-size: 1.6rem !important; }
-  .btn-primary { font-size: 1.6rem !important; padding: 20px 50px !important; }
+    .hero-headline-centered h1 {
+        text-transform: none !important; /* Ensure no uppercase on mobile */
+        font-size: 3.8rem !important;
+        letter-spacing: 1px;
+    }
+    
+    .hero-headline-centered h1 em {
+        text-transform: none !important;
+        font-size: 4.2rem !important;
+    }
+    
+    #i-release .section-title,
+    #i-am .section-title,
+    #i-choose .section-title {
+        text-transform: none !important;
+        font-size: 3.2rem !important;
+    }
+    
+    .trilogy-intro .section-title {
+        text-transform: none !important;
+        font-size: 3.5rem !important;
+    }
+    
+    .bundle-content .section-title {
+        text-transform: none !important;
+        font-size: 3.8rem !important;
+    }
+    
+    .white-main-title {
+        text-transform: none !important;
+        font-size: 3rem;
+    }
+    
+    .white-book-title {
+        text-transform: none !important;
+        font-size: 2.2rem;
+    }
 }
 
-@media (max-width: 480px) {
-  .hero-title { font-size: 3.2rem !important; }
-  .trilogy-intro .section-title { font-size: 3.5rem !important; }
-  .book-text .section-title { font-size: 3rem !important; }
-  .bundle-content .section-title { font-size: 3.2rem !important; }
+/* Make sure the actual HTML text is in the correct case */
+/* Your HTML should look like this (copy exactly): */
+/*
+<h1>
+    New beginnings<br>
+    that call for you to<br>
+    <em>release, reclaim<br>
+    and radiate</em>
+</h1>
+*/
+
+/* ===== FIX SECTION SPACING - REMOVE UNWANTED GAPS ===== */
+
+/* Main content spacing */
+main {
+    margin: 0;
+    padding: 0;
 }
-/* eye catching effects */
-/* ===== PARALLAX SCROLL EFFECT ===== */
+
+/* Control section spacing */
 .section {
-  position: relative;
-  overflow: hidden;
+    padding: 40px 0 !important; /* Reduced from 80px */
+    margin: 0 !important;
 }
 
-.hero-banner,
-.trilogy-image,
-.philosophy-banner,
-.book-cover,
-.bundle-cover {
-  transition: transform 0.5s ease;
+/* Hero section - keep more space at top */
+.section.hero {
+    padding-top: 100px !important; /* Reduced from 150px */
+    padding-bottom: 40px !important;
+    min-height: calc(100vh - 80px);
 }
 
-/* ===== FLOATING ANIMATION FOR BOOK COVERS ===== */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+/* Reduce spacing between consecutive sections */
+.section + .section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 
-.book-cover {
-  animation: float 6s ease-in-out infinite;
+/* Remove bottom margin from last element in each section */
+.section > .container > *:last-child,
+.section-text:last-child,
+.book-text:last-child {
+    margin-bottom: 0 !important;
 }
 
-.book-cover:hover {
-  animation-play-state: paused;
-  transform: translateY(-20px) scale(1.05);
+/* Tighten content within sections */
+.container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
-/* ===== GLOWING BORDERS ===== */
-.section.book {
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  transition: border-color 0.5s ease;
+/* Remove excessive margins from titles */
+.section-title {
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
 }
 
+.hero-headline-centered h1 {
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+}
+
+/* Remove gaps between paragraphs in book sections */
+.book-text .section-text p {
+    margin-bottom: 15px !important;
+}
+
+.book-text .section-text p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Reduce fancy book section margins */
+.fancy-book-for {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+/* Reduce button margins */
+.btn-primary {
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Fix the image holder spacing */
+.img-holder {
+    margin: 0 !important;
+}
+
+/* Trilogy intro specific spacing */
+.trilogy-intro .big-white-header {
+    margin-bottom: 30px !important;
+}
+
+.white-titles-grid {
+    margin-bottom: 30px !important;
+}
+
+/* Philosophy section spacing */
+.philosophy-content {
+    gap: 40px !important; /* Reduced from 60px */
+}
+
+/* Book content spacing */
+.book-content {
+    gap: 50px !important; /* Reduced from 80px */
+}
+
+/* Bundle section spacing */
+.bundle-books {
+    margin: 30px 0 !important; /* Reduced from 50px */
+}
+
+.bundle-btn {
+    margin: 30px 0 15px 0 !important; /* Reduced from 40px 0 20px 0 */
+}
+
+/* Footer spacing */
+.footer {
+    padding: 40px 20px !important; /* Reduced from 60px 20px */
+}
+
+/* Mobile spacing adjustments */
+@media (max-width: 768px) {
+    .section {
+        padding: 30px 0 !important;
+    }
+    
+    .section.hero {
+        padding-top: 80px !important;
+        padding-bottom: 30px !important;
+        min-height: auto;
+    }
+    
+    .philosophy-content,
+    .book-content {
+        gap: 30px !important;
+    }
+    
+    .hero-headline-centered {
+        padding: 0 15px !important;
+    }
+    
+    .hero-banner {
+        margin-top: 30px !important;
+    }
+    
+    .fancy-book-for {
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        padding: 1.5rem !important;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .section {
+        padding: 25px 0 !important;
+    }
+    
+    .section.hero {
+        padding-top: 60px !important;
+        padding-bottom: 25px !important;
+    }
+    
+    .container {
+        padding-inline: 15px !important;
+    }
+}
+
+/* ===== ADDITIONAL FIX: Prevent overlapping sections ===== */
+/* Ensure sections stack properly */
+.section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Create subtle separation between sections */
+.section:nth-child(even) {
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.02) 5%,
+        rgba(255, 255, 255, 0.02) 95%,
+        transparent 100%
+    ) !important;
+}
+
+/* Book sections - alternating backgrounds for visual separation */
 .section.book:nth-child(odd) {
-  border-left-color: var(--maroon-gold);
+    background: linear-gradient(135deg, var(--maroon-velvet) 0%, rgba(74, 0, 0, 0.9) 100%) !important;
 }
 
 .section.book:nth-child(even) {
-  border-right-color: var(--maroon-gold);
+    background: linear-gradient(135deg, rgba(74, 0, 0, 0.9) 0%, var(--maroon-velvet) 100%) !important;
 }
 
-/* ===== SPARKLE EFFECT ===== */
-.sparkle {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: var(--maroon-gold);
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0;
-  animation: sparkle 2s linear infinite;
+/* ===== FIX: Smooth transitions between sections ===== */
+.section {
+    transition: padding 0.3s ease;
 }
 
-@keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0); }
-  50% { opacity: 1; transform: scale(1); }
-}
-/* Add these to your stylesheet */
-.section.book {
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+/* Optional: Add subtle dividers between major sections */
+.section.trilogy-intro,
+.section.philosophy,
+.section.bundle {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.section.book::after {
+/* ===== FINAL TWEAK: Balance overall spacing ===== */
+/* /* ===== CLEAN SECTION SPACING FIX ===== */
+
+/* Remove all default margins and padding from sections */
+.section:not(.hero) {
+    padding: 50px 0 !important;
+    margin: 0 !important;
+}
+
+/* Remove gaps between consecutive non-hero sections */
+.section:not(.hero) + .section:not(.hero) {
+    margin-top: -1px !important; /* Slight overlap to eliminate gap */
+}
+
+/* Container spacing */
+.container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Reduce internal spacing */
+.section-title {
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+}
+
+.section-text p {
+    margin-bottom: 15px !important;
+}
+
+.section-text p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Book sections specific */
+.book-content {
+    gap: 40px !important;
+}
+
+/* Fancy book section spacing */
+.fancy-book-for {
+    margin: 25px 0 !important;
+}
+
+/* Button spacing */
+.btn-primary {
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+    .section:not(.hero) {
+        padding: 40px 0 !important;
+    }
+    
+    .book-content {
+        gap: 30px !important;
+    }
+    
+    .fancy-book-for {
+        margin: 20px 0 !important;
+    }
+}
+
+
+/* ===== FIX HERO IMAGE CENTERING ===== */
+
+/* Reset the problematic hero spacing */
+.section.hero {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Hero container should not add extra spacing */
+.section.hero .container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 20px 15px !important;
+}
+
+/* Hero headline should be at the top */
+.hero-headline-centered {
+    text-align: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 20px 0 !important;
+    flex: 0 0 auto !important;
+}
+
+/* Hero image should be centered below the text */
+.hero-banner {
+    width: 100% !important;
+    max-width: 800px !important;
+    margin: 30px auto 0 auto !important; /* Only top margin */
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+    display: block !important;
+}
+
+/* Remove any transform or positioning that might offset the image */
+.hero-banner,
+.hero-banner .img-holder,
+.hero-banner img {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+}
+
+/* Ensure the image covers properly */
+.hero-banner .img-cover {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+/* Header height compensation */
+.section.hero {
+    padding-top: 80px !important; /* Compensate for fixed header */
+}
+
+/* Mobile fixes */
+@media (max-width: 768px) {
+    .section.hero {
+        min-height: auto !important;
+        padding-top: 70px !important;
+    }
+    
+    .hero-headline-centered {
+        padding: 10px 0 !important;
+    }
+    
+    .hero-banner {
+        margin-top: 20px !important;
+        max-width: 100% !important;
+    }
+    
+    .section.hero .container {
+        padding: 15px !important;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .section.hero {
+        padding-top: 60px !important;
+    }
+    
+    .hero-banner {
+        margin-top: 15px !important;
+    }
+}
+
+/* ===== MATCH NEW REFERENCE IMAGE STYLE ===== */
+
+/* 1. Small uppercase tagline at the top (like "Limited Time: Just $5") */
+.hero-eyebrow {
+    text-transform: uppercase !important;
+    display: block;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+}
+
+/* 2. Main title in sentence case (like "You're 10 Minutes Away...") */
+.hero-headline-centered h1 {
+    text-transform: none !important; /* SENTENCE CASE, not all caps */
+    font-size: 6.5rem !important; /* Slightly smaller, more elegant */
+    font-weight: 700 !important; /* Bold but not ultra-bold */
+    line-height: 1.2 !important;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px !important;
+    color: var(--pure-white) !important; /* Solid white, no gradient */
+    text-align: center;
+    width: 100%;
+}
+
+/* 3. Emphasis line - also sentence case, slightly larger */
+.hero-headline-centered h1 em {
+    text-transform: none !important; /* SENTENCE CASE */
+    display: block;
+    font-style: italic; /* Italic like the reference */
+    font-weight: 600;
+    font-size: 6rem !important;
+    margin-top: 10px;
+    color: var(--pure-white) !important; /* Solid white */
+    text-align: center;
+    opacity: 0.95;
+}
+
+/* 4. Add a subtitle/description area (like "Turn years of overthinking...") */
+.hero-description {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    max-width: 700px;
+    margin: 20px auto 30px;
+    font-weight: 400;
+}
+
+/* 5. Clean, elegant look - remove excessive effects */
+.hero-headline-centered h1,
+.hero-headline-centered h1 em {
+    background: none !important;
+    -webkit-text-fill-color: var(--pure-white) !important;
+    animation: none !important;
+    filter: none !important;
+}
+
+/* 6. Center everything perfectly */
+.hero-headline-centered {
+    padding: 30px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 7. Make sure your HTML text is in the correct case */
+/* Your HTML should be exactly like this: */
+/*
+<span class="hero-eyebrow">COMPLETE TRANSFORMATION TRILOGY</span>
+<h1>
+    New beginnings<br>
+    that call for you to<br>
+    <em>release, reclaim<br>
+    and radiate</em>
+</h1>
+*/
+
+/* 8. Mobile responsive */
+@media (max-width: 992px) {
+    .hero-headline-centered h1 {
+        font-size: 3.8rem !important;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 4.2rem !important;
+    }
+    
+    .hero-eyebrow {
+        font-size: 1.2rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .hero-description {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-headline-centered h1 {
+        font-size: 3.2rem !important;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 3.5rem !important;
+    }
+    
+    .hero-eyebrow {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+    
+    .hero-description {
+        font-size: 1.5rem;
+        margin: 15px auto 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-headline-centered h1 {
+        font-size: 2.8rem !important;
+    }
+    
+    .hero-headline-centered h1 em {
+        font-size: 3rem !important;
+    }
+    
+    .hero-eyebrow {
+        font-size: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 1.4rem;
+    }
+}
+
+/* 9. Optional: Add a subtle separator line like the reference */
+.hero-eyebrow::after {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #ff6b6b, transparent);
-    opacity: 0;
-    transition: opacity 0.5s;
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 10px auto;
+    opacity: 0.5;
 }
 
-.section.book.active::after {
-    opacity: 1;
+/* 10. Clean up any previous conflicting styles */
+/* Remove these if they exist: */
+.hero-headline-centered h1 {
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5),
+                 8px 8px 15px rgba(0, 0, 0, 0.3) !important;
+    background: linear-gradient(45deg, #ffffff 0%, #f0e6d2 50%, var(--maroon-gold) 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    background-size: 200% auto !important;
+    animation: textShine 3s ease-in-out infinite alternate !important;
 }
 
-/* Shimmer effect on book cover */
-.book-cover::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        transparent 20%,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent 80%
-    );
-    transform: rotate(30deg);
-    opacity: 0;
-    transition: opacity 0.3s;
+.hero-headline-centered h1 em {
+    background: linear-gradient(45deg, var(--maroon-gold), #ffd700, var(--maroon-gold)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
 }
 
-.book-cover:hover::before {
-    opacity: 1;
-    animation: shimmer 1.5s;
+/* ===== FIX TRILOGY SECTION CENTERING ===== */
+
+/* Trilogy section should be centered */
+.section.trilogy-intro {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-@keyframes shimmer {
-    0% { transform: translateX(-100%) rotate(30deg); }
-    100% { transform: translateX(100%) rotate(30deg); }
+/* Trilogy container */
+.section.trilogy-intro .container {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-/* Minimal glowing titles */
-.book-title {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    transition: text-shadow 0.3s ease;
+/* Big white header - ensure centered */
+.big-white-header {
+    text-align: center !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 30px !important;
 }
 
-.book-title:hover {
-    text-shadow: 
-        0 0 15px rgba(255, 255, 255, 0.8),
-        0 0 25px rgba(255, 100, 100, 0.5);
+/* White badge */
+.white-badge {
+    display: inline-block !important;
+    margin: 0 auto 20px auto !important;
+    text-align: center !important;
 }
 
-.section.book.active .book-title {
-    animation: glow 2s ease-in-out infinite alternate;
+/* White main title */
+.white-main-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
 }
 
-@keyframes glow {
-    from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-    to { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+/* White subtitle */
+.white-subtitle {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
 }
+
+/* White titles grid - center the grid */
+.white-titles-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2rem !important;
+    margin: 0 auto 3rem auto !important;
+    max-width: 1100px !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Each white title card */
+.white-title-card {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Trilogy image - center it */
+.trilogy-image {
+    display: block !important;
+    margin: 0 auto 40px auto !important;
+    max-width: 900px !important;
+    width: 100% !important;
+}
+
+/* Trilogy text - center it */
+.trilogy-intro .section-text {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    max-width: 700px !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .white-titles-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 500px !important;
+        margin: 0 auto 2rem auto !important;
+    }
+    
+    .white-title-card {
+        width: 100% !important;
+    }
+    
+    .trilogy-image {
+        margin: 0 auto 30px auto !important;
+    }
+    
+    .section.trilogy-intro .container {
+        padding: 0 20px !important;
+    }
+}
+
+/* ===== REMOVE ANY LEFT-ALIGNING PADDING/MARGIN ===== */
+/* Check if any previous CSS is pushing it left */
+.section.trilogy-intro,
+.section.trilogy-intro * {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    float: none !important;
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+}
+
+/* ===== NUCLEAR OPTION: Force center everything in trilogy section ===== */
+.section.trilogy-intro > *,
+.section.trilogy-intro .container > *,
+.section.trilogy-intro .big-white-header > *,
+.section.trilogy-intro .white-titles-grid > * {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    text-align: center !important;
+}
+
+/* ===== FIX: MAKE WHITE TITLES GO ACROSS (GRID) NOT DOWN (LIST) ===== */
+
+/* The grid container */
+.white-titles-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* 3 columns side-by-side */
+    gap: 2rem !important;
+    margin: 0 auto 3rem auto !important;
+    max-width: 1100px !important;
+    width: 100% !important;
+}
+
+/* Each title card */
+.white-title-card {
+    text-align: center !important;
+    padding: 2rem 1rem !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s ease !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* If it's showing as list, force grid display */
+.white-titles-grid {
+    display: grid !important;
+    display: -ms-grid !important; /* For IE support */
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 768px) {
+    .white-titles-grid {
+        grid-template-columns: 1fr !important; /* Stack on mobile */
+        max-width: 500px !important;
+        gap: 1.5rem !important;
+    }
+}
+
+
+
+/* ===== CHECK FOR CONFLICTING STYLES ===== */
+/* Remove any list-related styles */
+.white-titles-grid,
+.white-title-card {
+    list-style: none !important;
+    display: block !important;
+    float: none !important;
+}
+
+.white-title-card:before,
+.white-title-card:after {
+    content: none !important;
+}
+
+/* ===== EMERGENCY FIX: Override everything ===== */
+.white-titles-grid {
+    display: flex !important;
+    display: -webkit-flex !important;
+    display: -moz-flex !important;
+    display: -ms-flexbox !important;
+    display: -webkit-box !important;
+    
+    flex-direction: row !important;
+    -webkit-flex-direction: row !important;
+    -moz-flex-direction: row !important;
+    
+    justify-content: space-between !important;
+    -webkit-justify-content: space-between !important;
+    -moz-justify-content: space-between !important;
+    
+    align-items: center !important;
+    -webkit-align-items: center !important;
+    -moz-align-items: center !important;
+    
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto 3rem auto !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.white-title-card {
+    display: block !important;
+    float: none !important;
+    width: 30% !important; /* Roughly 1/3 of the width */
+    margin: 0 !important;
+    padding: 2rem 1rem !important;
+    text-align: center !important;
+}
+
+@media (max-width: 768px) {
+    .white-titles-grid {
+        flex-direction: column !important;
+        -webkit-flex-direction: column !important;
+        -moz-flex-direction: column !important;
+    }
+    
+    .white-title-card {
+        width: 100% !important;
+        max-width: 400px !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .white-title-card:last-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+/* ===== FIX WHITE TITLES GRID - FORCE HORIZONTAL ===== */
+
+/* FIRST: Completely reset the grid */
+.white-titles-grid {
+    display: grid !important;
+    display: -ms-grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    -ms-grid-columns: 1fr 1fr 1fr !important;
+    gap: 2rem !important;
+    margin: 0 auto 3rem auto !important;
+    max-width: 1100px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+/* Make sure grid items display properly */
+.white-title-card {
+    display: grid !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 2rem 1rem !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-sizing: border-box !important;
+}
+
+/* SECOND: If grid isn't working, use flexbox as fallback */
+.white-titles-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    flex-wrap: nowrap !important;
+}
+
+.white-title-card {
+    flex: 1 !important;
+    min-width: 0 !important; /* Important for flex items to shrink */
+    margin: 0 1rem !important;
+}
+
+.white-title-card:first-child {
+    margin-left: 0 !important;
+}
+
+.white-title-card:last-child {
+    margin-right: 0 !important;
+}
+
+/* THIRD: Nuclear option - use inline-block */
+.white-titles-grid {
+    display: grid !important;
+    text-align: center !important;
+    font-size: 0 !important; /* Remove whitespace between inline-blocks */
+    white-space: nowrap !important;
+}
+
+.white-title-card {
+    display: inline-block !important;
+    width: 30% !important;
+    margin: 0 1.5% !important;
+    vertical-align: top !important;
+    font-size: 16px !important; /* Reset font size */
+    white-space: normal !important; /* Allow text to wrap */
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 768px) {
+    .white-titles-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1.5rem !important;
+    }
+    
+    .white-title-card {
+        display: block !important;
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 0 !important;
+    }
+}
+
